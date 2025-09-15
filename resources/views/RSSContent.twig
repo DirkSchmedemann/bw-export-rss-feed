@@ -1,0 +1,9 @@
+{% block items %}
+    {% if currentItems is not null %}
+        {% for item in currentItems %}
+            <item>
+                <title>{{ item.itemDescription.name1 }}</title>
+            </item>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
