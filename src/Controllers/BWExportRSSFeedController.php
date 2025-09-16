@@ -3,45 +3,36 @@
 namespace BWExportRSSFeed\Controllers;
 
 use Plenty\Plugin\Controller;
-use Plenty\Plugin\Templates\Twig;
-use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
+use BWExportRSSFeed\Providers\BWExportRSSFeedServiceProvider;
+use Plenty\Modules\Catalog\Contracts\CatalogRepositoryContract;
+use Plenty\Modules\Catalog\Contracts\CatalogExportRepositoryContract;
+use Plenty\Modules\Catalog\Contracts\TemplateContainerContract;
 
 class BWExportRSSFeedController extends Controller
 {
-    /**
-     * @param Twig $twig
-     * @return string
-     */
-    public function getItemsForFeed(Twig $twig, ItemDataLayerRepositoryContract $items):string
+    public function export(
+        CatalogRepositoryContract $catalogRepository,
+        CatalogExportRepositoryContract $catalogExportRepository,
+        TemplateContainerContract $templateContainer
+    )
     {
-        $itemColumns = [
-            'itemDescription' => [
-                'name1',
-                'description',
-            ]
-        ];
+        $catalogs = $catalogRepository->all();
 
-        $itemFilter = [
-            'itemBase.isStoreSpecial' => [
-                'shopAction' => [3]
-            ]
-        ];
+        foreach ($catalogs->getResult() as $catalog) {
+            $template = $templateContainer->getTemplate($catalog['template']);
 
-        $itemParams = [
-            'language' => 'de',
-        ];
+            if ($template->getName() != BWExportRSSFeedServiceProvider::PLUGIN_NAME) {
+                continue;
+            }
 
-        $resultItems = $items -> search($itemColumns, $itemFilter, $itemParams);
+            $exportService = $catalogExportRepository->exportById($catalog['id']);
 
-        $itemsResult = array();
-        foreach ($resultItems as $item) {
-            $itemsResult[] = $item;
+            $result = $exportService->getResult();
+
+            foreach ($result as $page) {
+                return $page;
+            }
         }
-
-        $data = array(
-            'currentItems' => $itemsResult
-        );
-
-        return $twig->render('BWExportRSSFeed::RSSContent', $data);
+        return null;
     }
 }
