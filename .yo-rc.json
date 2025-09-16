@@ -1,12 +1,12 @@
 {
   "@plentymarkets/generator-plugin": {
     "promptValues": {
-      "type": "template"
+      "type": "general"
     },
     "answers": {
       "name": "BWExportRSSFeed",
       "author": "Dirk Schmedemann",
-      "type": "template",
+      "type": "general",
       "description": "Template for CatalogExport as RSS-Feed",
       "version": "0.0.3"
     }
