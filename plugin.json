@@ -2,7 +2,7 @@
     "name"              :   "BWExportRSSFeed",
     "namespace"         :   "BWExportRSSFeed",
     "type"              :   "template",
-    "version"           :   "0.0.2",
+    "version"           :   "0.0.3",
     "pluginIcon"        :   "icon_plugin_xs.png",
     "description"       :   "Template for CatalogExport as RSS-Feed",
     "author"            :   "Dirk Schmedemann",
