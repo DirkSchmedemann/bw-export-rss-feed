@@ -12,6 +12,6 @@ class BWExportRSSFeedBootServiceProvider extends ServiceProvider
      */
 
     public function boot(TemplateContainerContract $container) {
-        $container->register(BWExportRSSFeedServiceProvider::PLUGIN_NAME,'RSS Feed',BWExportRSSFeedTemplateProvider::class);
+        $container->register(BWExportRSSFeedServiceProvider::PLUGIN_NAME,'RSS_Feed',BWExportRSSFeedTemplateProvider::class);
     }
 }
