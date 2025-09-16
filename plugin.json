@@ -1,0 +1,11 @@
+{
+    "name"              :   "BWExportRSSFeed",
+    "namespace"         :   "BWExportRSSFeed",
+    "type"              :   "template",
+    "version"           :   "0.0.1",
+    "pluginIcon"        :   "icon_plugin_xs.png",
+    "description"       :   "Template for CatalogExport as RSS-Feed",
+    "author"            :   "Dirk Schmedemann",
+    "authorIcon"        :   "icon_author_xs.png",
+    "serviceProvider"   :   "BWExportRSSFeed\\Providers\\BWExportRSSFeedServiceProvider"
+}
