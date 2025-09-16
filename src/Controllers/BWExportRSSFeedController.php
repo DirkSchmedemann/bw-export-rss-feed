@@ -42,6 +42,6 @@ class BWExportRSSFeedController extends Controller
             'currentItems' => $itemsResult
         );
 
-        return $twig->render('BWExportRSSFeed::Index', $data);
+        return $twig->render('BWExportRSSFeed::RSSContent', $data);
     }
 }
