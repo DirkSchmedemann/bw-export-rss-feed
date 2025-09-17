@@ -16,6 +16,7 @@ class BWExportRSSFeedDataProvider extends BaseDataProvider
                 'key' => 'title',
                 'label' => 'Titel',
                 'required' => true,
+                'value' => 'RSS Feed_TEST',
             ],
             [
                 'key' => 'link',
